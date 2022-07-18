@@ -1,5 +1,7 @@
 import express from "express";
+import "express-async-errors";
 import { json } from "body-parser";
+
 import { default as signUpRouter } from "./routes/sign-up";
 import { default as signInRouter } from "./routes/sign-in";
 import { default as signOutRouter } from "./routes/sign-out";
