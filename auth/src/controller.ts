@@ -7,7 +7,7 @@ const controller = {
     try {
       await service.getCurrentUser();
     } catch (err) {
-      console.log("[AuthService] Error tryinng to get current user:", err);
+      console.log("[AuthService] Error trying to get current user:", err);
       res.status(500).json({ error: err.message });
     }
   },
