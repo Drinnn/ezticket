@@ -1,10 +1,20 @@
 import express from "express";
 import { json } from "body-parser";
-import router from "./router";
+import { default as signUpRouter } from "./routes/sign-up";
+import { default as signInRouter } from "./routes/sign-in";
+import { default as signOutRouter } from "./routes/sign-out";
+import { default as getCurrentUserRouter } from "./routes/get-curret-user";
+import errorHandler from "./middlewares/error-handler";
 
 const app = express();
 app.use(json());
-app.use(router);
+
+app.use(signUpRouter);
+app.use(signInRouter);
+app.use(signOutRouter);
+app.use(getCurrentUserRouter);
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
   console.log("[AuthService] Running on port 3000...");
