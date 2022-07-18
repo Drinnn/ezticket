@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import CustomError from "../errors/custom-error";
 
 const errorHandler = (
   err: Error,
@@ -6,9 +7,13 @@ const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("[ErrorHandler] Error:", err);
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).send({ errors: err.serializeErrors() });
+  }
 
-  return res.status(500).json({ message: "Something went wrong" });
+  return res
+    .status(500)
+    .json({ errors: [{ message: "Internal server error" }] });
 };
 
 export default errorHandler;
