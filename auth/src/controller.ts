@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { verifyValidationMiddleware } from "./utils";
 import service from "./service";
 
 const controller = {
@@ -12,6 +13,7 @@ const controller = {
   },
   async signUp(req: Request, res: Response) {
     try {
+      verifyValidationMiddleware(req, res);
       await service.signUp();
     } catch (err) {
       console.log("[AuthService] Error trying to sign up:", err);
