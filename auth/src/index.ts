@@ -33,6 +33,10 @@ app.all("*", () => {
 app.use(errorHandler);
 
 const bootstrap = async () => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET must be defined");
+  }
+
   try {
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("[AuthService] Connected to MongoDB");
