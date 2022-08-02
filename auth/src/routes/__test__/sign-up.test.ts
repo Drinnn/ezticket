@@ -71,3 +71,12 @@ it("should return 400 status code with already existing email", async () => {
     })
     .expect(400);
 });
+
+it("should set a cookie after successful signup", async () => {
+  const response = await request(app).post("/api/auth/signUp").send({
+    email: "test@test.com",
+    password: "password",
+  });
+
+  expect(response.get("Set-Cookie")).toBeDefined();
+});
