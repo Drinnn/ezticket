@@ -1524,6 +1524,19 @@ express@^4.18.1:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+ezticket-common@^1.0.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ezticket-common/-/ezticket-common-1.0.4.tgz#577ac31b1ecdf8d4b6e1796cf408266fa0c0d6e4"
+  integrity sha512-VhiNT1k6ND53pdYxwotFmFyrs/kF16/zJpZzT3dDQq/I9+dH6A033qyD4ycfnvuY5wwp9FZorlcSWEe0ITUhjg==
+  dependencies:
+    "@types/cookie-session" "^2.0.44"
+    "@types/express" "^4.17.13"
+    "@types/jsonwebtoken" "^8.5.8"
+    cookie-session "^2.0.0"
+    express "^4.18.1"
+    express-validator "^6.14.2"
+    jsonwebtoken "^8.5.1"
+
 fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"

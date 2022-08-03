@@ -1,8 +1,7 @@
 import { Router, Request, Response } from "express";
 import { body } from "express-validator";
+import { BadRequestError, validateRequestMiddleware } from "ezticket-common";
 import jwt from "jsonwebtoken";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-request";
 import User from "../models/user";
 
 const router = Router();
@@ -16,7 +15,7 @@ router.post(
       .isLength({ min: 4, max: 20 })
       .withMessage("Password must be between 4 and 20 characters"),
   ],
-  validateRequest,
+  validateRequestMiddleware,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
 

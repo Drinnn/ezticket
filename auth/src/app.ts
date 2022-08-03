@@ -7,8 +7,7 @@ import { default as signUpRouter } from "./routes/sign-up";
 import { default as signInRouter } from "./routes/sign-in";
 import { default as signOutRouter } from "./routes/sign-out";
 import { default as getCurrentUserRouter } from "./routes/get-curret-user";
-import { RouteNotFoundError } from "./errors/route-not-found-error";
-import errorHandler from "./middlewares/error-handler";
+import { errorHandlerMiddleware, RouteNotFoundError } from "ezticket-common";
 
 const app = express();
 app.set("trust proxy", true);
@@ -29,6 +28,6 @@ app.all("*", () => {
   throw new RouteNotFoundError();
 });
 
-app.use(errorHandler);
+app.use(errorHandlerMiddleware);
 
 export default app;

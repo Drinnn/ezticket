@@ -1,8 +1,7 @@
 import { Request, Response, Router } from "express";
 import { body } from "express-validator";
+import { BadRequestError, validateRequestMiddleware } from "ezticket-common";
 import jwt from "jsonwebtoken";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-request";
 import User from "../models/user";
 import { Password } from "../services/password";
 
@@ -14,7 +13,7 @@ router.post(
     body("email").isEmail().withMessage("E-mail must be valid"),
     body("password").trim().notEmpty().withMessage("Password must be provided"),
   ],
-  validateRequest,
+  validateRequestMiddleware,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
